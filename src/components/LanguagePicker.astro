@@ -1,0 +1,27 @@
+---
+import { languages } from "../i18n/ui";
+
+// Obtener el idioma actual de la URL
+const currentPath = Astro.url.pathname;
+const currentLang = currentPath.split("/")[1];
+---
+
+<ul class="flex gap-4">
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <li>
+        <a
+          class:list={[
+            "border-b-4",
+            "hover:border-orange-500",
+            // Si el idioma actual coincide, mostrar borde naranja, si no borde transparente
+            currentLang === lang ? "border-orange-500" : "border-transparent",
+          ]}
+          href={`/${lang}/`}
+        >
+          {label}
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,15 +1,27 @@
+---
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "../i18n/utils";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
 <section class="flex p-4 w-full justify-center">
   <nav class="flex gap-8 items-center">
     <ul class="flex gap-8">
-      <li class="border-b-4 hover:border-orange-500"><a href="/">Home</a></li>
-      <li class="border-b-4 hover:border-orange-500"><a href="/about">About</a></li>
       <li class="border-b-4 hover:border-orange-500">
-        <select name="" id="language-selector" class="bg-transparent dark:text-white">
-          <option class="dark:text-black" value="es">Español</option>
-          <option class="dark:text-black" value="en">English</option>
-        </select>
+        <a href={translatePath("/")}>{t("nav.home")}</a>
       </li>
-      <li class="cursor-pointer flex justify-center items-center">
+      <li class="border-b-4 hover:border-orange-500">
+        <a href={translatePath("/about")}>{t("nav.about")}</a>
+      </li>
+      <LanguagePicker />
+      <!-- <li class="cursor-pointer flex justify-center items-center">
         <button type="button" id="theme-selector">
           <img
             src="/sun.svg"
@@ -22,7 +34,7 @@
             class="w-5 h-5 dark:hidden dark:text-white"
           />
         </button>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </section>
