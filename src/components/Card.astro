@@ -1,16 +1,20 @@
 ---
 const { img, title, description, post_date, id } = Astro.props;
-console.log(id);
 ---
 
-<section
-  class="w-4/5 lg:w-3/5 h-40 flex flex-col justify-center p-8 gap-1.5 mb-6
-  border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] shadow-black rounded-lg
-  hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-opacity-80 transition-all duration-300
-  hover:cursor-pointer"
-  onclick={`window.location.href = '/${id}'`}
+<a
+  class="w-11/12 md:w-10/12 lg:w-8/12 h-40 flex flex-col justify-center p-8 gap-1.5 mb-6
+    border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] shadow-black rounded-lg
+    hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-opacity-80 transition-all duration-300"
+  href={`/${id}`}
 >
-  <h2 class="text-2xl font-bold">{title}</h2>
-  <p class="text-lg">{description.slice(0, 150)}...</p>
-  <p class="text-md text-gray-500">Posted on {post_date}</p>
-</section>
+  <h2 class="text-2xl font-bold" transition:name={`title-${title}`}>
+    {title}
+  </h2>
+  <p class="text-lg" transition:name={`desc-${title}`}>
+    {description.slice(0, 150)}...
+  </p>
+  <p class="text-md text-gray-500">
+    Publicado en {post_date}
+  </p>
+</a>

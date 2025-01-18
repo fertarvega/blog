@@ -2,9 +2,38 @@
   <nav class="flex gap-8 items-center">
     <ul class="flex gap-8">
       <li class="border-b-4 hover:border-orange-500"><a href="/">Home</a></li>
+      <li class="border-b-4 hover:border-orange-500"><a href="/about">About</a></li>
       <li class="border-b-4 hover:border-orange-500">
-        <a href="/about">About</a>
+        <select name="" id="language-selector" class="bg-transparent dark:text-white">
+          <option class="dark:text-black" value="es">Español</option>
+          <option class="dark:text-black" value="en">English</option>
+        </select>
+      </li>
+      <li class="cursor-pointer flex justify-center items-center">
+        <button type="button" id="theme-selector">
+          <img
+            src="/sun.svg"
+            alt="change_theme"
+            class="w-5 h-5 hidden dark:block"
+          />
+          <img
+            src="/moon.svg"
+            alt="change_theme"
+            class="w-5 h-5 dark:hidden dark:text-white"
+          />
+        </button>
       </li>
     </ul>
   </nav>
 </section>
+
+<script>
+  const themeButton = document.getElementById("theme-selector");
+
+  if (themeButton) {
+    themeButton.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
+</script>

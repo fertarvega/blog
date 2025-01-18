@@ -1,38 +1,50 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <ClientRouter />
     <title>Fernando's Blog</title>
-    <link 
-      rel="preload" 
-      href="/fonts/PixelifySans-Variable.woff2" 
-      as="font" 
-      type="font/woff2" 
+    <script>
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        document.documentElement.classList.toggle(
+          "dark",
+          storedTheme === "dark"
+        );
+      }
+    </script>
+    <link
+      rel="preload"
+      href="/fonts/PixelifySans-Variable.woff2"
+      as="font"
+      type="font/woff2"
       crossorigin
     />
+    <script src="/main.js" defer></script>
   </head>
-  <body>
+  <body class="dark:bg-gray-900 dark:text-white">
+    <Header />
     <slot />
   </body>
 </html>
 
 <style is:global>
   @font-face {
-    font-family: 'Pixelify Sans';
-    src: url('/fonts/PixelifySans-Variable.woff2') format('woff2-variations');
-    font-weight: 400 700; /* Ajusta esto según el rango de weights que soporte tu fuente */
+    font-family: "Pixelify Sans";
+    src: url("/fonts/PixelifySans-Variable.woff2") format("woff2-variations");
+    font-weight: 400 700;
     font-display: swap;
   }
 
   :root {
-    font-family: 'Pixelify Sans', system-ui, sans-serif;
+    font-family: "Pixelify Sans", system-ui, sans-serif;
   }
 
   html,
