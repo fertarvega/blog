@@ -6,7 +6,6 @@ import { render } from "astro:content";
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => {
-    // Extraer el idioma y el slug del path del post
     const [lang, ...slug] = post.id.split("/");
     return {
       params: {
@@ -21,6 +20,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { title, description, date, img } = post.data;
 const { Content } = await render(post);
+const imagePath = `/images/${img}`;
 ---
 
 <Layout>
@@ -29,7 +29,11 @@ const { Content } = await render(post);
       class="w-11/12 md:w-10/12 lg:w-8/12 flex flex-col gap-8 items-center justify-center p-8
         border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] shadow-black rounded-lg"
     >
-      <img src={img} alt={title} class="w-72 h-auto rounded-lg shadow-lg" />
+      <img
+        src={imagePath}
+        alt={title}
+        class="w-72 h-auto rounded-lg shadow-lg"
+      />
       <div class="flex flex-col gap-4">
         <h1
           class="text-3xl font-bold leading-8"
@@ -51,4 +55,3 @@ const { Content } = await render(post);
     </article>
   </section>
 </Layout>
-

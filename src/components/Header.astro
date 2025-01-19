@@ -4,24 +4,44 @@ import {
   useTranslatedPath,
   useTranslations,
 } from "../i18n/utils";
-import LanguagePicker from "./LanguagePicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translate = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<section class="flex p-4 w-full justify-center">
-  <nav class="flex gap-8 items-center">
-    <ul class="flex gap-8">
-      <li class="border-b-4 hover:border-orange-500">
-        <a href={translatePath("/")}>{t("nav.home")}</a>
-      </li>
-      <li class="border-b-4 hover:border-orange-500">
-        <a href={translatePath("/about")}>{t("nav.about")}</a>
-      </li>
-      <LanguagePicker />
-      <!-- <li class="cursor-pointer flex justify-center items-center">
+<nav class="flex gap-8 items-center justify-between w-full px-6 py-6 md:px-12">
+  <div class="flex gap-8 hidden sm:block">
+    <span>Fernando Tarango</span>
+  </div>
+  <ul class="flex gap-8">
+    <li class="border-b-4 hover:border-orange-500">
+      <a href={translatePath("/")}>{translate("home")}</a>
+    </li>
+    <li class="border-b-4 hover:border-orange-500">
+      <a href={translatePath("/about")}>{translate("about")}</a>
+    </li>
+  </ul>
+  <ul class="flex gap-8">
+    <li
+      class:list={[
+        "border-b-4",
+        "hover:border-orange-500",
+        "es" === lang && "border-orange-500",
+      ]}
+    >
+      <a href={`/`}> Es </a>
+    </li>
+    <li
+      class:list={[
+        "border-b-4",
+        "hover:border-orange-500",
+        "en" === lang && "border-orange-500",
+      ]}
+    >
+      <a href={`/en/`}> En </a>
+    </li>
+    <!-- <li class="cursor-pointer flex justify-center items-center">
         <button type="button" id="theme-selector">
           <img
             src="/sun.svg"
@@ -35,9 +55,8 @@ const translatePath = useTranslatedPath(lang);
           />
         </button>
       </li> -->
-    </ul>
-  </nav>
-</section>
+  </ul>
+</nav>
 
 <script>
   const themeButton = document.getElementById("theme-selector");

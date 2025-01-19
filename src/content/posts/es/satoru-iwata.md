@@ -2,7 +2,7 @@
 title: Mi opinión sobre Satoru Iwata
 description: Satoru Iwata fue un hombre que hizo grandes cosas para la industria de los videojuegos. Fue un gran líder y un gran amigo de los desarrolladores. Fue un gran defensor de la industria de los videojuegos y siempre estuvo dispuesto a ayudar a los demás. Fue un gran líder y un gran amigo de los desarrolladores. Fue un gran defensor de la industria de los videojuegos y siempre estuvo dispuesto a ayudar a los demás.
 date: 17/01/2025
-img: ./iwata.jpg
+img: iwata.jpg
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

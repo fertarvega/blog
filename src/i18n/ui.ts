@@ -5,15 +5,13 @@ export const languages = {
 
 export const defaultLang = "es";
 
-export const ui = {
+export const uiNav = {
   en: {
-    "nav.home": "Home",
-    "nav.about": "About",
+    home: "Home",
+    about: "About",
   },
   es: {
-    "nav.home": "Inicio",
-    "nav.about": "Sobre mí",
+    home: "Inicio",
+    about: "Sobre mí",
   },
 } as const;
-
-export const showDefaultLang = false;

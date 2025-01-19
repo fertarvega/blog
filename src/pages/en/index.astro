@@ -2,10 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 import { getCollection } from "astro:content";
-import { useTranslations, getLangFromUrl } from "../../i18n/utils";
+import { getLangFromUrl } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 const posts = await getCollection("posts");
 const postsData = posts.filter((post) => post.id.startsWith(lang));
 ---
